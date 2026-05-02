@@ -1,0 +1,19 @@
+{
+  "buildCommand": "npm install && npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://YOUR_BACKEND_DOMAIN/api/$1"
+    },
+    {
+      "source": "/socket.io/(.*)",
+      "destination": "https://YOUR_BACKEND_DOMAIN/socket.io/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
