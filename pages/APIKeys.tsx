@@ -64,9 +64,9 @@ export default function APIKeys() {
   return (
     <div className="space-y-6">
       <Toast toast={toast} onClose={() => setToast(null)} />
-      <div className="flex justify-between items-end">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="text-3xl font-bold font-sans text-white tracking-tight">API Integrity Keys</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold font-sans text-white tracking-tight">API Integrity Keys</h1>
           <p className="text-slate-400 mt-1">Manage and rotate your live authentication secrets.</p>
         </div>
         <Button onClick={() => setIsCreating(true)} className="gap-2 bg-purple-600">
@@ -77,8 +77,8 @@ export default function APIKeys() {
 
       {isCreating && (
         <Card className="bg-[#1E2130]-40 border-purple-500/20 shadow-xl">
-          <form onSubmit={handleCreate} className="flex flex-wrap gap-4 items-end">
-            <div className="flex-1 space-y-2">
+          <form onSubmit={handleCreate} className="flex flex-col gap-4 lg:flex-row lg:items-end">
+            <div className="min-w-0 flex-1 space-y-2">
               <label className="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Key Label</label>
               <input
                 type="text"
@@ -89,7 +89,7 @@ export default function APIKeys() {
                 required
               />
             </div>
-            <div className="flex-1 space-y-2">
+            <div className="min-w-0 flex-1 space-y-2">
               <label className="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Assign to API</label>
               <select
                 value={selectedApiId}
@@ -103,7 +103,7 @@ export default function APIKeys() {
                 ))}
               </select>
             </div>
-            <div className="flex gap-2">
+            <div className="flex flex-col gap-2 sm:flex-row">
               <Button type="submit" disabled={createMutation.isPending}>
                 {createMutation.isPending ? <Loader2 className="animate-spin" /> : 'CREATE KEY'}
               </Button>
@@ -117,7 +117,7 @@ export default function APIKeys() {
         <Card className="bg-teal-500/10 border-teal-500/20 p-6">
           <h3 className="text-teal-400 font-bold mb-2 uppercase tracking-widest text-xs">New API Key Generated</h3>
           <p className="text-slate-400 text-sm mb-4">Copy this secret now. You won't be able to see it again for security reasons.</p>
-          <div className="flex gap-2">
+          <div className="flex flex-col gap-2 sm:flex-row">
             <div className="flex-1 bg-black/40 border border-teal-500/20 p-3 rounded-xl font-mono text-white break-all">
               {revealedKey}
             </div>
@@ -129,7 +129,7 @@ export default function APIKeys() {
 
       <Card className="bg-[#1E2130]/40 border-purple-500/10 p-0 overflow-hidden shadow-2xl">
         <div className="overflow-x-auto">
-          <table className="w-full text-left">
+          <table className="min-w-[720px] w-full text-left">
             <thead>
               <tr className="text-slate-500 text-[10px] uppercase tracking-wider bg-white/5">
                 <th className="py-4 px-6 font-semibold">Name / Label</th>
@@ -158,7 +158,7 @@ export default function APIKeys() {
                   <td className="py-5"><Badge status={key.status} /></td>
                   <td className="py-5 text-slate-500 text-xs font-mono">{key.last_used_at ? new Date(key.last_used_at).toLocaleDateString() : 'Never'}</td>
                   <td className="py-5 pr-6">
-                    <div className="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+            <div className="flex justify-end gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
                       <Button variant="ghost" className="p-2" onClick={() => rotateMutation.mutate(key.id)} title="Rotate Key">
                         <RotateCcw className="w-4 h-4" />
                       </Button>
@@ -175,7 +175,7 @@ export default function APIKeys() {
       </Card>
 
       <Card className="border-amber-500/20 bg-amber-500/[0.02] shadow-xl">
-        <div className="flex gap-4">
+        <div className="flex flex-col gap-4 sm:flex-row">
           <div className="bg-amber-500/10 p-3 rounded-xl h-fit">
             <ShieldAlert className="w-6 h-6 text-amber-500" />
           </div>

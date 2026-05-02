@@ -33,9 +33,9 @@ export default function Analytics() {
 
   return (
     <div className="space-y-6 text-slate-200">
-      <div className="flex justify-between items-end">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-white">System Pulse</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">System Pulse</h1>
           <p className="text-slate-400 mt-1">Deep dive into your API performance and consumption patterns.</p>
         </div>
         <div className="flex bg-slate-900 rounded-xl p-1 border border-slate-700/50">
@@ -56,7 +56,7 @@ export default function Analytics() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Card className="bg-[#1E2130]/40 border-purple-500/10">
-          <div className="flex justify-between items-center mb-8">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-8">
             <div>
               <h3 className="text-lg font-bold text-white">Latency (P99)</h3>
               <p className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Measured in milliseconds</p>
@@ -113,11 +113,11 @@ export default function Analytics() {
           </div>
           <div className="divide-y divide-purple-500/10">
             {(endpointsRes || []).map((item: any, i: number) => (
-              <div key={i} className="flex items-center justify-between p-4 px-6 hover:bg-white/5 transition-colors cursor-pointer group">
-                <div className="flex items-center gap-4">
+              <div key={i} className="flex items-start justify-between gap-4 p-4 sm:px-6 hover:bg-white/5 transition-colors cursor-pointer group">
+                <div className="flex min-w-0 items-center gap-4">
                   <div className="text-xs font-mono bg-slate-900 border border-slate-700/50 px-2 py-1 rounded text-purple-400">{i + 1}</div>
                   <div>
-                    <p className="text-sm font-mono text-white group-hover:text-purple-400 transition-colors">{item.endpoint}</p>
+                    <p className="break-all text-sm font-mono text-white group-hover:text-purple-400 transition-colors">{item.endpoint}</p>
                     <p className="text-[10px] text-slate-500 uppercase font-bold tracking-tight">Latency avg: {item.avg_latency != null ? Number(item.avg_latency).toFixed(0) : 'N/A'}ms</p>
                   </div>
                 </div>

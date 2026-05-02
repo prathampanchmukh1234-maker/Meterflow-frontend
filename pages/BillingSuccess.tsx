@@ -26,7 +26,7 @@ export default function BillingSuccess() {
         </div>
 
         <Badge status="paid" className="mb-4" />
-        <h1 className="text-3xl font-bold text-white tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
           {state.title || (kind === 'plan' ? 'Plan switched successfully' : 'Payment successful')}
         </h1>
         <p className="text-slate-400 mt-3">
@@ -61,14 +61,14 @@ export default function BillingSuccess() {
         )}
 
         <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3">
-          <Link to="/billing">
-            <Button className="gap-2 bg-purple-600">
+          <Link to="/billing" className="w-full sm:w-auto">
+            <Button className="w-full gap-2 bg-purple-600 sm:w-auto">
               Back to Billing
               <ArrowRight className="w-4 h-4" />
             </Button>
           </Link>
-          <Link to="/dashboard">
-            <Button variant="secondary">View Dashboard</Button>
+          <Link to="/dashboard" className="w-full sm:w-auto">
+            <Button variant="secondary" className="w-full sm:w-auto">View Dashboard</Button>
           </Link>
         </div>
       </Card>

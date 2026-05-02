@@ -64,19 +64,19 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0F1117] flex items-center justify-center p-4">
-      <div className="w-full max-w-md space-y-8">
+    <div className="min-h-screen bg-[#0F1117] flex items-center justify-center px-4 py-8">
+      <div className="w-full max-w-md space-y-6 sm:space-y-8">
         <div className="text-center">
           <div className="flex justify-center mb-6">
             <div className="bg-purple-600/20 p-4 rounded-3xl border border-purple-500/30">
-              <Rocket className="w-12 h-12 text-purple-500" />
+              <Rocket className="w-10 h-10 sm:w-12 sm:h-12 text-purple-500" />
             </div>
           </div>
-          <h1 className="text-4xl font-black text-white tracking-tighter">METERFLOW</h1>
+          <h1 className="text-3xl sm:text-4xl font-black text-white tracking-tighter">METERFLOW</h1>
           <p className="text-slate-500 font-mono text-xs uppercase tracking-widest mt-2">API Metering & Billing Platform</p>
         </div>
 
-        <Card className="bg-[#1E2130]/60 border-purple-500/20 backdrop-blur-xl p-8 shadow-2xl">
+        <Card className="bg-[#1E2130]/60 border-purple-500/20 backdrop-blur-xl p-4 sm:p-8 shadow-2xl">
           <form onSubmit={handleAuth} className="space-y-6">
             {error && (
               <div className="bg-red-500/10 border border-red-500/20 text-red-400 text-sm p-4 rounded-xl text-center font-bold">

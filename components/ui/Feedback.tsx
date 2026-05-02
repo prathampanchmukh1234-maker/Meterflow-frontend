@@ -45,7 +45,7 @@ export function Toast({ toast, onClose }: { toast: ToastState; onClose: () => vo
   const Icon = styles.icon;
 
   return (
-    <div className="fixed right-6 top-20 z-[120] w-96 max-w-[calc(100vw-2rem)] animate-in slide-in-from-top-2 fade-in duration-200">
+    <div className="fixed left-4 right-4 top-20 z-[120] sm:left-auto sm:right-6 sm:w-96 sm:max-w-[calc(100vw-2rem)] animate-in slide-in-from-top-2 fade-in duration-200">
       <div className={cn('rounded-xl border p-4 shadow-2xl backdrop-blur-md', styles.className)}>
         <div className="flex items-start gap-3">
           <Icon className="w-5 h-5 mt-0.5 flex-none" />
@@ -79,7 +79,7 @@ export function ConfirmDialog({
 
   return (
     <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm">
-      <div className="w-full max-w-md rounded-2xl border border-purple-500/20 bg-[#171A25] p-6 shadow-2xl animate-in zoom-in-95 fade-in duration-200">
+      <div className="w-full max-w-md rounded-2xl border border-purple-500/20 bg-[#171A25] p-4 sm:p-6 shadow-2xl animate-in zoom-in-95 fade-in duration-200">
         <div className="flex items-start gap-4">
           <div
             className={cn(
@@ -97,7 +97,7 @@ export function ConfirmDialog({
           </div>
         </div>
 
-        <div className="mt-6 flex justify-end gap-3">
+        <div className="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
           <Button type="button" variant="secondary" onClick={onCancel} disabled={isLoading}>
             {cancelLabel}
           </Button>

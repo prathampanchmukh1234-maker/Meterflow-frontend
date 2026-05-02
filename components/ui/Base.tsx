@@ -12,7 +12,7 @@ export const Card = ({ className, glass, children, ...props }: CardProps) => {
   return (
     <div
       className={cn(
-        "rounded-2xl border border-purple-500/20 bg-[#1E2130]/60 p-6 backdrop-blur-sm shadow-xl",
+        "rounded-2xl border border-purple-500/20 bg-[#1E2130]/60 p-4 sm:p-6 backdrop-blur-sm shadow-xl",
         glass && "backdrop-blur-md bg-white/5 border-white/10",
         className
       )}
@@ -36,7 +36,7 @@ export const Button = React.forwardRef<HTMLButtonElement, React.ButtonHTMLAttrib
       <button
         ref={ref}
         className={cn(
-          "inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition-all active:scale-95 disabled:opacity-50 disabled:pointer-events-none",
+          "inline-flex min-h-10 items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition-all active:scale-95 disabled:opacity-50 disabled:pointer-events-none",
           variants[variant],
           className
         )}

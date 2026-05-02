@@ -23,9 +23,9 @@ export default function Activity() {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-end">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">API Logs</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">API Logs</h1>
           <p className="text-slate-400 mt-1">Real-time audit trail of every request passing through the gateway.</p>
         </div>
         <div className="flex bg-slate-900 rounded-xl p-1 border border-slate-700/50">
@@ -45,7 +45,7 @@ export default function Activity() {
       </div>
 
       <Card className="bg-[#1E2130]/40 border-purple-500/10 p-0 overflow-hidden shadow-2xl">
-        <div className="p-4 border-b border-purple-500/10 flex justify-between items-center bg-white/[0.02]">
+        <div className="p-4 border-b border-purple-500/10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between bg-white/[0.02]">
           <div className="flex items-center gap-4">
             <select
               value={statusFilter}
@@ -65,7 +65,7 @@ export default function Activity() {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse">
+          <table className="min-w-[760px] w-full text-left border-collapse">
             <thead>
               <tr className="bg-white/5">
                 <th className="px-6 py-4 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Timestamp</th>
@@ -124,7 +124,7 @@ export default function Activity() {
           </table>
         </div>
 
-        <div className="p-4 border-t border-purple-500/10 flex justify-center items-center gap-4 bg-white/[0.02]">
+        <div className="p-4 border-t border-purple-500/10 flex justify-center items-center gap-3 sm:gap-4 bg-white/[0.02]">
           <Button
             variant="secondary"
             onClick={() => setPage(p => Math.max(1, p - 1))}

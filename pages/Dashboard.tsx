@@ -16,7 +16,7 @@ const StatsCard = ({ title, value, change, icon: Icon, color }: any) => (
        <Icon className={cn("w-12 h-12", color)} />
     </div>
     <p className="text-slate-400 text-xs font-semibold mb-1">{title}</p>
-    <h3 className="text-3xl font-bold text-white tracking-tight">{value}</h3>
+    <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">{value}</h3>
     {change !== undefined && (
       <p className={cn("text-xs mt-2 flex items-center gap-1 font-medium", change >= 0 ? "text-teal-400" : "text-red-400")}>
         {change >= 0 ? 
@@ -132,9 +132,9 @@ export default function Dashboard() {
   return (
     <div className="space-y-6">
       <Toast toast={toast} onClose={() => setToast(null)} />
-      <div className="flex justify-between items-end">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-white">System Pulse</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">System Pulse</h1>
           <p className="text-slate-400 mt-1">Real-time health monitoring and traffic metrics.</p>
         </div>
         <Button onClick={() => { setEditingApi(null); setApiForm({ name: '', description: '', base_url: '' }); setIsApiModalOpen(true); }} className="gap-2 bg-purple-600">
@@ -152,7 +152,7 @@ export default function Dashboard() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <Card className="lg:col-span-2 bg-[#1E2130]/40 border-purple-500/10">
-          <div className="flex justify-between items-center mb-6">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between mb-6">
             <h4 className="font-bold text-white">Usage Traffic (Requests/segment)</h4>
           </div>
           <div className="h-[300px]">
@@ -193,11 +193,11 @@ export default function Dashboard() {
       </div>
 
       <Card className="bg-[#1E2130]/40 border-purple-500/10 p-0 overflow-hidden shadow-2xl">
-        <div className="px-6 py-4 border-b border-purple-500/10 flex justify-between items-center bg-white/5">
+        <div className="px-4 py-4 sm:px-6 border-b border-purple-500/10 flex justify-between items-center bg-white/5">
           <h4 className="font-bold text-white uppercase tracking-widest text-xs">API Management Infrastructure</h4>
         </div>
         <div className="overflow-x-auto">
-          <table className="w-full text-sm text-left">
+          <table className="min-w-[680px] w-full text-sm text-left">
             <thead>
               <tr className="text-slate-500 text-[10px] uppercase tracking-wider">
                 <th className="px-6 py-4 font-semibold">API Name</th>
@@ -241,7 +241,7 @@ export default function Dashboard() {
       {/* Create/Edit API Modal */}
       {isApiModalOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <div className="w-full max-w-lg bg-[#1E2130] border border-purple-500/20 rounded-3xl p-8 shadow-2xl animate-in zoom-in-95 duration-200">
+          <div className="w-full max-w-lg max-h-[calc(100vh-2rem)] overflow-y-auto bg-[#1E2130] border border-purple-500/20 rounded-3xl p-4 sm:p-8 shadow-2xl animate-in zoom-in-95 duration-200">
             <div className="flex justify-between items-center mb-6">
               <h3 className="text-xl font-bold text-white">{editingApi ? 'Edit API Configuration' : 'Onboard New API'}</h3>
               <button onClick={() => setIsApiModalOpen(false)} className="text-slate-500 hover:text-white transition-colors">
@@ -282,7 +282,7 @@ export default function Dashboard() {
                 />
               </div>
 
-              <div className="flex gap-4 pt-4">
+              <div className="flex flex-col gap-3 pt-4 sm:flex-row sm:gap-4">
                 <Button 
                   type="submit" 
                   className="flex-1 py-4 font-bold"
@@ -294,7 +294,7 @@ export default function Dashboard() {
                   type="button" 
                   variant="secondary" 
                   onClick={() => setIsApiModalOpen(false)}
-                  className="px-8"
+                  className="sm:px-8"
                 >
                   CANCEL
                 </Button>

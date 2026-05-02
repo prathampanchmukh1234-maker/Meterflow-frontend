@@ -67,7 +67,7 @@ export default function Playground() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-white tracking-tight">API Playground</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">API Playground</h1>
         <p className="text-slate-400 mt-1">Test your configured endpoints through the MeterFlow secure gateway.</p>
       </div>
 
@@ -95,7 +95,7 @@ export default function Playground() {
                 </p>
               </div>
 
-              <div className="flex gap-2">
+              <div className="flex flex-col gap-2 sm:flex-row">
                 <select 
                   value={method} 
                   onChange={(e) => setMethod(e.target.value)}
@@ -139,13 +139,13 @@ export default function Playground() {
 
         <div className="space-y-6">
           <Card className="h-full flex flex-col bg-[#1E2130]/40 border-purple-500/10 min-h-[500px]">
-            <div className="flex justify-between items-center mb-6">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-6">
               <h2 className="text-lg font-bold flex items-center gap-2 text-white">
                 <Code2 className="w-5 h-5 text-teal-400" />
                 Response Viewer
               </h2>
               {response && (
-                <div className="flex gap-3">
+                <div className="flex flex-wrap gap-3">
                    <div className={cn("flex items-center gap-1.5 text-xs font-bold", response.status < 300 ? "text-teal-400" : "text-red-400")}>
                      <div className={cn("w-1.5 h-1.5 rounded-full", response.status < 300 ? "bg-teal-400 shadow-[0_0_8px_rgba(45,212,191,0.5)]" : "bg-red-400 shadow-[0_0_8px_rgba(244,63,94,0.5)]")} />
                      {response.status} {response.statusText}
@@ -155,7 +155,7 @@ export default function Playground() {
               )}
             </div>
 
-            <div className="flex-1 bg-black/30 border border-purple-500/10 rounded-xl overflow-y-auto p-6">
+            <div className="flex-1 bg-black/30 border border-purple-500/10 rounded-xl overflow-y-auto p-4 sm:p-6">
               {!response && !isLoading && (
                 <div className="h-full flex flex-col items-center justify-center text-slate-600 space-y-4">
                   <Play className="w-12 h-12 opacity-10" />

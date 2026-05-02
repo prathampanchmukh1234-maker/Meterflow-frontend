@@ -64,7 +64,7 @@ export default function Settings() {
     <div className="space-y-8 max-w-4xl">
       <Toast toast={toast} onClose={() => setToast(null)} />
       <div>
-        <h1 className="text-3xl font-bold text-white tracking-tight">Account System</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Account System</h1>
         <p className="text-slate-400 mt-1">Manage your identity, developer plan, and security preferences.</p>
       </div>
 
@@ -83,7 +83,7 @@ export default function Settings() {
         </div>
         <Card className="md:col-span-2 bg-[#1E2130]/40 border-purple-500/10">
           <form onSubmit={handleUpdateProfile} className="space-y-6">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider ml-1">Full Name</label>
                 <input
@@ -118,8 +118,8 @@ export default function Settings() {
           <p className="text-xs text-slate-500 leading-relaxed">Your current quota and usage limits per billing cycle.</p>
         </div>
         <Card className="md:col-span-2 bg-[#1E2130]/40 border-purple-500/10">
-          <div className="flex items-center justify-between p-4 bg-purple-600/5 border border-purple-500/10 rounded-2xl mb-6">
-            <div className="flex items-center gap-4">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between p-4 bg-purple-600/5 border border-purple-500/10 rounded-2xl mb-6">
+            <div className="flex min-w-0 items-center gap-4">
               <div className="bg-purple-600 p-3 rounded-2xl shadow-lg shadow-purple-900/40">
                 <Shield className="w-5 h-5 text-white" />
               </div>
@@ -130,7 +130,7 @@ export default function Settings() {
             </div>
             <Badge status="active" />
           </div>
-          <div className="grid grid-cols-2 gap-6 p-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 p-2">
             <div>
               <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Monthly Quota</p>
               <p className="text-xl font-bold text-white font-mono">{profile?.role === 'consumer' ? 'N/A' : `${usageData?.plan?.free_quota?.toLocaleString() || 0} reqs`}</p>
@@ -156,7 +156,7 @@ export default function Settings() {
             { id: 'rate', label: 'Rate Limit Warnings', desc: 'When your keys hit usage limits' },
             { id: 'error', label: 'System Errors', desc: 'Weekly summary of API 5xx spikes' }
           ].map(opt => (
-            <label key={opt.id} className="flex items-center justify-between p-4 bg-slate-900/50 border border-slate-700/50 rounded-2xl cursor-pointer hover:bg-slate-800 transition-colors">
+            <label key={opt.id} className="flex items-center justify-between gap-4 p-4 bg-slate-900/50 border border-slate-700/50 rounded-2xl cursor-pointer hover:bg-slate-800 transition-colors">
               <div>
                 <p className="text-sm font-bold text-white">{opt.label}</p>
                 <p className="text-[10px] text-slate-500">{opt.desc}</p>
@@ -168,7 +168,7 @@ export default function Settings() {
       </div>
 
       <div className="border-t border-red-500/10 pt-8">
-        <div className="bg-red-500/5 border border-red-500/20 rounded-3xl p-8 flex items-center justify-between">
+        <div className="bg-red-500/5 border border-red-500/20 rounded-3xl p-4 sm:p-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h4 className="text-lg font-bold text-red-500 flex items-center gap-2">
               <Trash2 className="w-5 h-5" /> Danger Zone

@@ -215,9 +215,9 @@ export default function Billing() {
   return (
     <div className="space-y-6">
       <Toast toast={toast} onClose={() => setToast(null)} />
-      <div className="flex justify-between items-end">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">Billing & Usage</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Billing & Usage</h1>
           <p className="text-slate-400 mt-1">Manage your subscriptions, plan tiers, and invoice history.</p>
         </div>
         <Button
@@ -265,10 +265,10 @@ export default function Billing() {
              <CreditCard className="w-48 h-48" />
           </div>
           <div className="relative z-10">
-            <div className="flex justify-between items-start mb-8">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between mb-8">
               <div>
                 <p className="text-[#06B6D4] text-[10px] font-bold uppercase tracking-widest mb-1">Current Plan</p>
-                <h2 className="text-3xl font-bold text-white tracking-tight">{usageRes?.plan?.name || 'Loading...'}</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">{usageRes?.plan?.name || 'Loading...'}</h2>
               </div>
               <Badge status="active" />
             </div>
@@ -310,7 +310,7 @@ export default function Billing() {
         <Card className="flex flex-col bg-[#1E2130]/40 border-purple-500/10">
           <h2 className="text-lg font-bold text-white mb-6 uppercase tracking-tight">Payment Method</h2>
           <div className="flex-1 space-y-6">
-            <div className="p-4 rounded-xl border border-slate-700 bg-slate-900/50 flex items-center gap-4">
+            <div className="p-4 rounded-xl border border-slate-700 bg-slate-900/50 flex flex-wrap items-center gap-4">
                <div className="w-12 h-12 rounded-lg bg-slate-800 flex items-center justify-center">
                   <CreditCard className="w-6 h-6 text-slate-500" />
                </div>
@@ -336,14 +336,14 @@ export default function Billing() {
       </div>
 
       <Card className="bg-[#1E2130]/40 border-purple-500/10 p-0 overflow-hidden shadow-2xl">
-        <div className="flex justify-between items-center p-6 border-b border-purple-500/10">
+        <div className="flex justify-between items-center p-4 sm:p-6 border-b border-purple-500/10">
           <h2 className="text-lg font-bold flex items-center gap-2 text-white">
             <History className="w-5 h-5 text-slate-500" />
             Invoicing History
           </h2>
         </div>
         <div className="overflow-x-auto">
-          <table className="w-full text-left">
+          <table className="min-w-[760px] w-full text-left">
             <thead>
               <tr className="text-slate-500 text-[10px] font-bold border-b border-purple-500/10 uppercase tracking-widest bg-white/5">
                 <th className="py-4 px-6">Invoice ID</th>

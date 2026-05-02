@@ -59,7 +59,8 @@ export const Sidebar = () => {
   const isConsumer = profile?.role === 'consumer';
 
   return (
-    <div className="w-60 h-screen bg-[#141721] border-r border-purple-500/20 flex flex-col fixed left-0 top-0">
+    <>
+    <aside className="hidden md:flex w-60 h-screen bg-[#141721] border-r border-purple-500/20 flex-col fixed left-0 top-0 z-40">
       <div className="p-6 flex items-center gap-3">
         <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#7C3AED] to-[#06B6D4] flex items-center justify-center shadow-[0_0_15px_rgba(124,58,237,0.4)]">
           <Zap className="text-white w-5 h-5 fill-current" />
@@ -111,6 +112,28 @@ export const Sidebar = () => {
           )}
         </div>
       </div>
-    </div>
+    </aside>
+
+    <nav className="md:hidden fixed inset-x-0 bottom-0 z-50 border-t border-purple-500/20 bg-[#141721]/95 px-2 pb-[calc(env(safe-area-inset-bottom)+0.5rem)] pt-2 backdrop-blur-md">
+      <div className="flex items-center gap-1 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {navItems.map((item) => (
+          <Link
+            key={item.path}
+            to={item.path}
+            className={cn(
+              'flex min-w-16 flex-none flex-col items-center justify-center gap-1 rounded-xl px-1 py-2 text-[10px] font-semibold transition-colors',
+              location.pathname === item.path
+                ? 'bg-purple-500/10 text-purple-300'
+                : 'text-slate-500 hover:bg-white/5 hover:text-white'
+            )}
+            aria-label={item.label}
+          >
+            <item.icon className={cn('h-5 w-5', location.pathname === item.path ? 'text-purple-300' : 'text-slate-500')} />
+            <span className="max-w-full truncate">{item.label}</span>
+          </Link>
+        ))}
+      </div>
+    </nav>
+    </>
   );
 };

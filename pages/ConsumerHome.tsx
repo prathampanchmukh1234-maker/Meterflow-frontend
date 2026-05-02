@@ -13,9 +13,9 @@ export default function ConsumerHome() {
   return (
     <div className="space-y-8">
       <div className="max-w-5xl space-y-8">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-white tracking-tight">Consumer Console</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Consumer Console</h1>
             <p className="text-slate-400 mt-1">Use API keys provided by an API owner and test gateway requests.</p>
           </div>
           <div className="px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs font-bold uppercase">

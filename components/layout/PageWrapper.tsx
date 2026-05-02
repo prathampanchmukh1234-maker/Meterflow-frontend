@@ -113,9 +113,9 @@ export const PageWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="min-h-screen bg-[#0F1117] text-slate-200 flex">
       <Sidebar />
-      <main className="flex-1 ml-60 flex flex-col h-screen overflow-hidden">
-        <header className="h-16 border-b border-purple-500/10 px-8 flex items-center justify-between bg-[#0F1117]/80 backdrop-blur-md sticky top-0 z-50">
-          <div className="relative w-96">
+      <main className="flex-1 md:ml-60 flex min-w-0 flex-col h-screen overflow-hidden">
+        <header className="min-h-16 border-b border-purple-500/10 px-4 py-3 sm:px-6 lg:px-8 flex items-center justify-between gap-3 bg-[#0F1117]/80 backdrop-blur-md sticky top-0 z-50">
+          <div className="relative hidden sm:block w-full max-w-xs lg:max-w-sm">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 w-4 h-4" />
             <input 
               type="text" 
@@ -124,7 +124,13 @@ export const PageWrapper = ({ children }: { children: React.ReactNode }) => {
             />
           </div>
 
-          <div className="flex items-center gap-6">
+          <div className="flex min-w-0 flex-1 items-center justify-between sm:justify-end gap-3 sm:gap-6">
+            <div className="sm:hidden flex items-center gap-2 min-w-0">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#7C3AED] to-[#06B6D4] flex items-center justify-center">
+                <span className="text-sm font-black text-white">M</span>
+              </div>
+              <span className="truncate text-base font-bold text-white">MeterFlow</span>
+            </div>
             {demoMode && (
               <div className="hidden lg:block rounded-full border border-amber-500/20 bg-amber-500/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-amber-300">
                 Read-only demo
@@ -146,7 +152,7 @@ export const PageWrapper = ({ children }: { children: React.ReactNode }) => {
               </button>
 
               {notificationsOpen && (
-                <div className="absolute right-0 top-10 w-96 max-w-[calc(100vw-2rem)] bg-[#171A25] border border-purple-500/20 rounded-xl shadow-2xl overflow-hidden z-[60]">
+                <div className="fixed left-4 right-4 top-16 sm:absolute sm:left-auto sm:right-0 sm:top-10 sm:w-96 sm:max-w-[calc(100vw-2rem)] bg-[#171A25] border border-purple-500/20 rounded-xl shadow-2xl overflow-hidden z-[60]">
                   <div className="px-4 py-3 border-b border-purple-500/10 flex items-center justify-between">
                     <div>
                       <p className="text-sm font-bold text-white">Notifications</p>
@@ -202,27 +208,27 @@ export const PageWrapper = ({ children }: { children: React.ReactNode }) => {
                 </div>
               )}
             </div>
-            <div className="flex items-center gap-3 pl-6 border-l border-purple-500/10">
-              <div className="text-right">
-                <p className="text-sm font-semibold text-white">{displayName}</p>
-                <p className="text-[10px] text-teal-400 font-mono tracking-tighter uppercase">{user?.email}</p>
+            <div className="flex items-center gap-2 sm:gap-3 sm:pl-6 sm:border-l border-purple-500/10">
+              <div className="hidden md:block text-right min-w-0">
+                <p className="text-sm font-semibold text-white truncate">{displayName}</p>
+                <p className="max-w-44 truncate text-[10px] text-teal-400 font-mono tracking-tighter uppercase">{user?.email}</p>
               </div>
               <button 
                 onClick={handleLogout}
                 className="flex items-center gap-3 text-slate-400 hover:text-red-400 transition-colors group"
               >
-                <div className="w-10 h-10 rounded-full border border-purple-500/50 p-0.5 bg-gradient-to-tr from-purple-600 to-teal-500">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-purple-500/50 p-0.5 bg-gradient-to-tr from-purple-600 to-teal-500">
                   <div className="w-full h-full rounded-full bg-slate-800 flex items-center justify-center font-bold text-sm text-white">
                     {initials}
                   </div>
                 </div>
-                <LogOut className="w-5 h-5" />
+                <LogOut className="hidden sm:block w-5 h-5" />
               </button>
             </div>
           </div>
         </header>
 
-        <div className="flex-1 overflow-y-auto p-8">
+        <div className="flex-1 overflow-y-auto px-4 py-5 pb-28 sm:px-6 lg:p-8 lg:pb-8">
           {children}
         </div>
       </main>

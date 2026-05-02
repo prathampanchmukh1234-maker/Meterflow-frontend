@@ -53,9 +53,9 @@ export default function Webhooks() {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">Webhooks</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Webhooks</h1>
           <p className="text-slate-400 mt-1">Receive real-time notifications for system events.</p>
         </div>
       </div>
@@ -107,7 +107,7 @@ export default function Webhooks() {
         </Card>
 
         <Card className="lg:col-span-2 bg-[#1E2130]/40 border-purple-500/10 p-0 overflow-hidden">
-          <div className="p-6 border-b border-purple-500/10">
+          <div className="p-4 sm:p-6 border-b border-purple-500/10">
             <h3 className="text-lg font-bold text-white uppercase tracking-wider">Active Deliveries</h3>
           </div>
           <div className="divide-y divide-purple-500/10">
@@ -119,14 +119,14 @@ export default function Webhooks() {
               <div className="p-12 text-center text-slate-500 italic">No webhooks registered.</div>
             ) : (
               webhooks.map((webhook: any) => (
-                <div key={webhook.id} className="p-6 group">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-4">
+                <div key={webhook.id} className="p-4 sm:p-6 group">
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-4">
+                    <div className="flex min-w-0 items-center gap-4">
                       <div className="bg-slate-900 p-3 rounded-2xl border border-slate-700">
                         <Webhook className="w-5 h-5 text-teal-400" />
                       </div>
                       <div>
-                        <p className="font-mono text-white text-sm truncate max-w-xs">{webhook.endpoint_url}</p>
+                        <p className="font-mono text-white text-sm break-all sm:truncate sm:max-w-xs">{webhook.endpoint_url}</p>
                         <p className="text-[10px] text-slate-500 font-bold uppercase mt-1">Secret: ••••••••{webhook.secret.slice(-8)}</p>
                       </div>
                     </div>
