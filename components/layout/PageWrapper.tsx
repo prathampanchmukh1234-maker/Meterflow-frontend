@@ -7,6 +7,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import api from '../../services/api';
 import { cn } from '../../utils';
 import { useSocket } from '../../hooks/useSocket';
+import { isDemoMode, stopDemoMode } from '../../services/demo';
 
 type NotificationItem = {
   id: string;
@@ -31,12 +32,22 @@ export const PageWrapper = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<any>(null);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [lastReadAt, setLastReadAt] = useState('');
+  const [demoMode, setDemoMode] = useState(false);
   const notificationRef = useRef<HTMLDivElement | null>(null);
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const { socketRef } = useSocket();
 
   useEffect(() => {
+    const demo = isDemoMode();
+    setDemoMode(demo);
+    if (demo) {
+      setUser({
+        email: 'demo@meterflow.app',
+        user_metadata: { name: 'Demo Viewer' },
+      });
+      return;
+    }
     supabase.auth.getUser().then(({ data: { user } }) => setUser(user));
   }, []);
 
@@ -75,6 +86,11 @@ export const PageWrapper = ({ children }: { children: React.ReactNode }) => {
   });
 
   const handleLogout = async () => {
+    if (demoMode) {
+      stopDemoMode();
+      navigate('/login');
+      return;
+    }
     await supabase.auth.signOut();
     navigate('/login');
   };
@@ -109,6 +125,11 @@ export const PageWrapper = ({ children }: { children: React.ReactNode }) => {
           </div>
 
           <div className="flex items-center gap-6">
+            {demoMode && (
+              <div className="hidden lg:block rounded-full border border-amber-500/20 bg-amber-500/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-amber-300">
+                Read-only demo
+              </div>
+            )}
             <div className="relative" ref={notificationRef}>
               <button
                 type="button"

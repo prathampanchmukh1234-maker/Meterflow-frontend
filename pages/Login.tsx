@@ -4,6 +4,7 @@ import { Card, Button } from '../components/ui/Base';
 import { Key, Mail, Lock, Loader2, Rocket } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
+import { startDemoMode, stopDemoMode } from '../services/demo';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -16,6 +17,12 @@ export default function Login() {
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
   const navigate = useNavigate();
 
+  const handleDemoPreview = async () => {
+    await supabase.auth.signOut();
+    startDemoMode();
+    navigate('/dashboard');
+  };
+
   const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -23,6 +30,7 @@ export default function Login() {
     setSuccessMsg(null);
 
     try {
+      stopDemoMode();
       if (isSignUp) {
         const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
           email,
@@ -167,6 +175,17 @@ export default function Login() {
                 </span>
               )}
             </Button>
+
+            {!isSignUp && (
+              <Button
+                type="button"
+                variant="secondary"
+                onClick={handleDemoPreview}
+                className="w-full py-3 border-teal-500/20 text-teal-300 hover:text-white"
+              >
+                Preview Demo Workspace
+              </Button>
+            )}
           </form>
 
           <div className="mt-8 text-center pt-6 border-t border-white/5">

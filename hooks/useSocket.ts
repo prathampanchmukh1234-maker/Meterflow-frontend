@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { io, Socket } from 'socket.io-client';
 import { supabase } from '../services/supabase';
+import { isDemoMode } from '../services/demo';
 
 export function useSocket() {
   const socketRef = useRef<Socket | null>(null);
@@ -8,6 +9,8 @@ export function useSocket() {
 
   useEffect(() => {
     let active = true;
+
+    if (isDemoMode()) return;
 
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (!session || !active) return;
