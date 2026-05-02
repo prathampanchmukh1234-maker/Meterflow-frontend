@@ -5,11 +5,11 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://YOUR_BACKEND_DOMAIN/api/$1"
+      "destination": "https://meterflow-backend-1a7h.onrender.com/api/$1"
     },
     {
       "source": "/socket.io/(.*)",
-      "destination": "https://YOUR_BACKEND_DOMAIN/socket.io/$1"
+      "destination": "https://meterflow-backend-1a7h.onrender.com/socket.io/$1"
     },
     {
       "source": "/(.*)",
